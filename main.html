@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма входа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #message {
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Вход в ситему</h2> 
+    <!-- BUG1 Опечатка -->
+    <form id="loginForm">
+        <label for="login">Логин:</label>
+        <input type="text" id="login" name="login" required>
+
+        <label for="password">Пароль:</label>
+        <input type="text" id="password" name="password">
+        <!-- BUG2 Пароль не скрыт астерисками -->
+        <!-- BUG3 Пароль необязательный -->
+
+        <button type="submit">Войти</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Отменяем стандартную отправку формы
+            
+            const login = document.getElementById('login').value;
+            const messageElement = document.getElementById('message');
+            
+            // messageElement.textContent = `Вы успешно вошли как ${login}`;
+            messageElement.textContent = `Вы успешно вошли как Вася Пупкин`;
+        });
+    </script>
+    <!-- BUG4 Выводится чужое имя -->
+</body>
+</html>
